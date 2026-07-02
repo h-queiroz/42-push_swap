@@ -24,3 +24,4 @@
     - Heap sort adaptation
     - Binary indexed tree approaches
 ### Adaptative
+Custom adaptive algorithm (learner’s design): Design an adaptive strategy that selects different internal methods depending on the measured disorder. You are not constrained to any specific named algorithm; the internal techniques are entirely up to you. However, your design must respect the following complexity targets per regime (in the Push_swap operation model)
