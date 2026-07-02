@@ -2,7 +2,7 @@ CC 			:= cc
 CFLAGS		:= -Wall -Wextra -Werror
 DEBUGFLAGS	:= -g -O0
 
-SRCS		:= main.c
+SRCS		:= push_swap.c stack_utils.c
 OBJS		:= $(SRCS:.c=.o)
 
 LIBFT		:= ft_printf/libftprintf.a
