@@ -18,11 +18,11 @@ t_stacks	init_stacks(int ac, char **av);
 
 // sa (swap a): Swap the first two elements at the top of stack a.
 // 				Do nothing if there is only one or no elements.
-void		sa(t_stacks *stacks);
+void		sa(int *stack, int max_length);
 
 // sb (swap b): Swap the first two elements at the top of stack b.
 // 				Do nothing if there is only one or no elements.
-void		sb(t_stacks *stacks);
+void		sb(int *stack, int max_length);
 
 // ss:	sa and sb at the same time.
 void		ss(t_stacks *stacks);
@@ -37,22 +37,22 @@ void		pb(t_stacks *stacks);
 
 // ra (rotate a):	Shift up all elements of stack a by one.
 // 					The first element becomes the last one
-void		ra(t_stacks *stacks);
+void		ra(int *stack, int max_length);
 
 // rb (rotate b): 	Shift up all elements of stack b by one.
 // 					The first element becomes the last one
-void		rb(t_stacks *stacks);
+void		rb(int *stack, int max_length);
 
 // rr:	ra and rb at the same time.
 void		rr(t_stacks *stacks);
 
 // rra (reverse rotate a):	Shift down all elements of stack a by one.
 // 							The last element becomes the first one.
-void		rra(t_stacks *stacks);
+void		rra(int	*stack, int max_length);
 
 // rrb (reverse rotate b):	Shift down all elements of stack b by one.
 // 							The last element becomes the first one.
-void		rrb(t_stacks *stacks);
+void		rrb(int	*stack, int max_length);
 
 // rrr:	rra and rrb at the same time.
 void		rrr(t_stacks *stacks);

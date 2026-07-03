@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "algorithms.h"
+// #include "algorithms.h"
 
 // Taking in consideration that is only gonna receive valid numbers for now
 int	main(int ac, char **av)
@@ -20,22 +20,22 @@ int	main(int ac, char **av)
 
 	stacks = init_stacks(ac, av);
 
-	// sa(&stacks);
-	// sb(&stacks);
+	// sa(stacks.stack_a, stacks.amount_a);
+	// sb(stacks.stack_b, stacks.amount_b);
 	// ss(&stacks);
 	// pb(&stacks);
 	// pa(&stacks);
-	// ra(&stacks);
-	// rb(&stacks);
+	// ra(stacks.stack_a, stacks.amount_a);
+	// rb(stacks.stack_b, stacks.amount_b);
 	// rr(&stacks);
-	// rra(&stacks);
-	// rrb(&stacks);
+	// rra(stacks.stack_a, stacks.amount_a);
+	// rrb(stacks.stack_b, stacks.amount_b);
 	// rrr(&stacks);
 
 	print_stack(stacks, 'a');
 	print_stack(stacks, 'b');
 
-	apply_simple(&stacks);
+	// apply_simple(&stacks);
 
 	return (0);
 }

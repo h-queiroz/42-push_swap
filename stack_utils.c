@@ -3,7 +3,7 @@
 t_stacks	init_stacks(int ac, char **av)
 {
 	t_stacks	stacks;
-	int i;
+	int			i;
 
 	stacks.max_length = (ac - 1);
 	stacks.stack_a = ft_calloc(stacks.max_length, sizeof(int));
@@ -16,128 +16,124 @@ t_stacks	init_stacks(int ac, char **av)
 	return (stacks);
 }
 
-void	sa(t_stacks *stacks)
+static void	sx(int *stack, int max_length)
 {
-	int swap;
-	int last;
+	int	swap;
+	int	last;
 
-	last = (stacks->amount_a - 1);
-	if ((stacks->amount_a) > 1)
+	last = (max_length - 1);
+	if ((max_length) > 1)
 	{
-		swap = stacks->stack_a[last];
-		stacks->stack_a[last] = stacks->stack_a[last - 1];
-		stacks->stack_a[last - 1] = swap;
+		swap = stack[last];
+		stack[last] = stack[last - 1];
+		stack[last - 1] = swap;
 	}
 }
 
-void	sb(t_stacks *stacks)
+void	sa(int *stack, int max_length)
 {
-	int swap;
-	int last;
-
-	last = (stacks->amount_b - 1);
-	if ((stacks->amount_b) > 1)
-	{
-		swap = stacks->stack_b[last];
-		stacks->stack_b[last] = stacks->stack_b[last - 1];
-		stacks->stack_b[last - 1] = swap;
-	}
+	sx(stack, max_length);
+	ft_printf("sa\n");
 }
 
-void		ss(t_stacks *stacks)
+void	sb(int *stack, int max_length)
 {
-	sa(stacks);
-	sb(stacks);
+	sx(stack, max_length);
+	ft_printf("sb\n");
+}
+
+void	ss(t_stacks *stacks)
+{
+	sx(stacks->stack_a, stacks->amount_a);
+	sx(stacks->stack_b, stacks->amount_b);
+	ft_printf("ss\n");
 }
 
 void	pa(t_stacks *stacks)
 {
 	if ((stacks->amount_b) > 0)
 		stacks->stack_a[stacks->amount_a++] = stacks->stack_b[--stacks->amount_b];
+	ft_printf("pa\n");
 }
 
 void	pb(t_stacks *stacks)
 {
 	if ((stacks->amount_a) > 0)
 		stacks->stack_b[stacks->amount_b++] = stacks->stack_a[--stacks->amount_a];
+	ft_printf("pb\n");
 }
 
-void	ra(t_stacks *stacks)
+static void	rx(int *stack, int max_length)
 {
 	int	swap;
-	int last;
+	int	last;
 
-	if ((stacks->amount_a) > 1)
+	if ((max_length) > 1)
 	{
-		last = (stacks->amount_a - 1);
-		swap = stacks->stack_a[last];
+		last = (max_length - 1);
+		swap = stack[last];
 		while (last-- > 0)
-			stacks->stack_a[last + 1] = stacks->stack_a[last];
-		stacks->stack_a[0] = swap;
+			stack[last + 1] = stack[last];
+		stack[0] = swap;
 	}
 }
 
-void	rb(t_stacks *stacks)
+void	ra(int *stack, int max_length)
 {
-	int	swap;
-	int last;
+	rx(stack, max_length);
+	ft_printf("ra\n");
+}
 
-	if ((stacks->amount_b) > 1)
-	{
-		last = (stacks->amount_b - 1);
-		swap = stacks->stack_b[last];
-		while (last-- > 0)
-			stacks->stack_b[last + 1] = stacks->stack_b[last];
-		stacks->stack_b[0] = swap;
-	}
+void	rb(int *stack, int max_length)
+{
+	rx(stack, max_length);
+	ft_printf("ra\n");
 }
 
 void	rr(t_stacks *stacks)
 {
-	ra(stacks);
-	rb(stacks);
+	rx(stacks->stack_a, stacks->amount_a);
+	rx(stacks->stack_b, stacks->amount_b);
+	ft_printf("rr\n");
 }
 
-void	rra(t_stacks *stacks)
+static void	rrx(int	*stack, int max_length)
 {
 	int	swap;
-	int i;
-	int last;
+	int	i;
+	int	last_index;
 
-	if ((stacks->amount_a) > 1)
+	if (max_length > 1)
 	{
+		last_index = (max_length - 1);
 		i = 0;
-		last = (stacks->amount_a - 1);
-		swap = stacks->stack_a[i];
-		while (i++ < last)
-			stacks->stack_a[i - 1] = stacks->stack_a[i];
-		stacks->stack_a[last] = swap;
+		swap = stack[i];
+		while (i++ < last_index)
+			stack[i - 1] = stack[i];
+		stack[last_index] = swap;
 	}
 }
 
-void	rrb(t_stacks *stacks)
+void	rra(int	*stack, int max_length)
 {
-	int	swap;
-	int i;
-	int last;
+	rrx(stack, max_length);
+	ft_printf("rra\n");
+}
 
-	if ((stacks->amount_b) > 1)
-	{
-		i = 0;
-		last = (stacks->amount_b - 1);
-		swap = stacks->stack_b[i];
-		while (i++ < last)
-			stacks->stack_b[i - 1] = stacks->stack_b[i];
-		stacks->stack_b[last] = swap;
-	}
+void	rrb(int	*stack, int max_length)
+{
+	rrx(stack, max_length);
+	ft_printf("rrb\n");
 }
 
 void	rrr(t_stacks *stacks)
 {
-	rra(stacks);
-	rrb(stacks);
+	rrx(stacks->stack_a, stacks->amount_a);
+	rrx(stacks->stack_b, stacks->amount_b);
+	ft_printf("rrr\n");
 }
 
+// To be removed when the project is finished
 void	print_stack(t_stacks stacks, char c)
 {
 	int	i;
