@@ -16,7 +16,7 @@ t_stacks	init_stacks(int ac, char **av)
 	return (stacks);
 }
 
-void		sa(t_stacks *stacks)
+void	sa(t_stacks *stacks)
 {
 	int swap;
 	int last;
@@ -30,7 +30,7 @@ void		sa(t_stacks *stacks)
 	}
 }
 
-void		sb(t_stacks *stacks)
+void	sb(t_stacks *stacks)
 {
 	int swap;
 	int last;
@@ -44,16 +44,52 @@ void		sb(t_stacks *stacks)
 	}
 }
 
-void		pa(t_stacks *stacks)
+void	pa(t_stacks *stacks)
 {
 	if ((stacks->amount_b) > 0)
 		stacks->stack_a[stacks->amount_a++] = stacks->stack_b[--stacks->amount_b];
 }
 
-void		pb(t_stacks *stacks)
+void	pb(t_stacks *stacks)
 {
 	if ((stacks->amount_a) > 0)
 		stacks->stack_b[stacks->amount_b++] = stacks->stack_a[--stacks->amount_a];
+}
+
+void	ra(t_stacks *stacks)
+{
+	int	swap;
+	int last;
+
+	if ((stacks->amount_a) > 1)
+	{
+		last = (stacks->amount_a - 1);
+		swap = stacks->stack_a[last];
+		while (last-- > 0)
+			stacks->stack_a[last + 1] = stacks->stack_a[last];
+		stacks->stack_a[0] = swap;
+	}
+}
+
+void	rb(t_stacks *stacks)
+{
+	int	swap;
+	int last;
+
+	if ((stacks->amount_b) > 1)
+	{
+		last = (stacks->amount_b - 1);
+		swap = stacks->stack_b[last];
+		while (last-- > 0)
+			stacks->stack_b[last + 1] = stacks->stack_b[last];
+		stacks->stack_b[0] = swap;
+	}
+}
+
+void	rr(t_stacks *stacks)
+{
+	ra(stacks);
+	rb(stacks);
 }
 
 void	print_stack(t_stacks stacks, char c)

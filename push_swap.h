@@ -18,6 +18,9 @@ void		sa(t_stacks *stacks);
 void		sb(t_stacks *stacks);
 void		pb(t_stacks *stacks);
 void		pa(t_stacks *stacks);
+void		ra(t_stacks *stacks);
+void		rb(t_stacks *stacks);
+void		rr(t_stacks *stacks);
 
 // For debug
 void		print_stack(t_stacks stacks, char c);

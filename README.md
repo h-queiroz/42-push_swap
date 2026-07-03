@@ -30,6 +30,9 @@ This is not efficient cause it would make take a lot of steps to move the single
 So my alternative to that is to store the numbers in reverse. The "bottom" of the stack is actually in the first index, and the "top" is in the last index.
 Since the only changes only remove or add actions happen at the end of the array, this makes it easier for operations to work.
 
+---
+After implementing ra and rb, I can tell that using Linked List is way more performatic to "move all numbers".
+
 ## Selection Sort
 The way my Selection Sort works in this adaptation for 2 stacks is that it searches the lowest number in Stack A, moves it to the top and pushes it to Stack B
 This process it's repeated constantly until Stack A it's empty and Stack B is ordered in the inverse order. So then the last thing to be done is to push them  back to Stack A.
