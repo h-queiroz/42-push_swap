@@ -14,8 +14,10 @@ typedef struct s_stacks
 
 // For production
 t_stacks	init_stacks(int ac, char **av);
-void		sa(t_stacks stacks);
-void		pb(t_stacks stacks);
+void		sa(t_stacks *stacks);
+void		sb(t_stacks *stacks);
+void		pb(t_stacks *stacks);
+void		pa(t_stacks *stacks);
 
 // For debug
 void		print_stack(t_stacks stacks, char c);

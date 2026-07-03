@@ -42,12 +42,36 @@ int	main(int ac, char **av)
 	t_stacks stacks;
 
 	stacks = init_stacks(ac, av);
-	print_stack(stacks, 'a');
-	// print_stack(stacks, 'b');
-	sa(stacks);
-	print_stack(stacks, 'a');
-	// print_stack(stacks, 'b');
 
+	print_stack(stacks, 'a');
+	print_stack(stacks, 'b');
+
+	sa(&stacks);
+	sb(&stacks);
+	pb(&stacks);
+
+	print_stack(stacks, 'a');
+	print_stack(stacks, 'b');
+
+	sa(&stacks);
+	sb(&stacks);
+	pb(&stacks);
+
+	print_stack(stacks, 'a');
+	print_stack(stacks, 'b');
+
+	sa(&stacks);
+	sb(&stacks);
+	pb(&stacks);
+
+	print_stack(stacks, 'a');
+	print_stack(stacks, 'b');
+
+	pa(&stacks);
+	pa(&stacks);
+
+	print_stack(stacks, 'a');
+	print_stack(stacks, 'b');
 
 	return (0);
 }
