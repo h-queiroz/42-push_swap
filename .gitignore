@@ -3,4 +3,3 @@ ft_printf/
 .gitignore
 compile_commands.json
 swapper/
-og_main.c

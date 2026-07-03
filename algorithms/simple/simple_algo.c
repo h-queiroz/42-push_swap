@@ -14,21 +14,20 @@ static int	search_minor(int *stack, int max_length);
 
 void	apply_simple(t_stacks *stacks)
 {
-	int minor_index;
+	int	minor_index;
 
 	minor_index = search_minor(stacks->stack_a, stacks->amount_a);
 	ft_printf("Minor Index in A: %d\n", minor_index);
 	ft_printf("Minor Value in A: %d\n", stacks->stack_a[minor_index]);
 	ft_printf("--------------------------\n");
-
 	// move_to_top();
 }
 
 // Returns index of minor number in given Stack
 static int	search_minor(int *stack, int max_length)
 {
-	int minor;
-	int i;
+	int	minor;
+	int	i;
 
 	if (max_length == 0)
 		return (-1);
