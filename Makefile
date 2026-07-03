@@ -1,8 +1,11 @@
 CC 			:= cc
-CFLAGS		:= -Wall -Wextra -Werror
+CFLAGS		:= -Wall -Wextra -Werror -Iincludes -Ift_printf
 DEBUGFLAGS	:= -g -O0
 
-SRCS		:= push_swap.c stack_utils.c
+SRCS		:= 	push_swap.c \
+				stack_utils.c \
+				algorithms/simple/simple_algo.c
+
 OBJS		:= $(SRCS:.c=.o)
 
 LIBFT		:= ft_printf/libftprintf.a
