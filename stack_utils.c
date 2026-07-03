@@ -44,6 +44,12 @@ void	sb(t_stacks *stacks)
 	}
 }
 
+void		ss(t_stacks *stacks)
+{
+	sa(stacks);
+	sb(stacks);
+}
+
 void	pa(t_stacks *stacks)
 {
 	if ((stacks->amount_b) > 0)
@@ -90,6 +96,46 @@ void	rr(t_stacks *stacks)
 {
 	ra(stacks);
 	rb(stacks);
+}
+
+void	rra(t_stacks *stacks)
+{
+	int	swap;
+	int i;
+	int last;
+
+	if ((stacks->amount_a) > 1)
+	{
+		i = 0;
+		last = (stacks->amount_a - 1);
+		swap = stacks->stack_a[i];
+		while (i++ < last)
+			stacks->stack_a[i - 1] = stacks->stack_a[i];
+		stacks->stack_a[last] = swap;
+	}
+}
+
+void	rrb(t_stacks *stacks)
+{
+	int	swap;
+	int i;
+	int last;
+
+	if ((stacks->amount_b) > 1)
+	{
+		i = 0;
+		last = (stacks->amount_b - 1);
+		swap = stacks->stack_b[i];
+		while (i++ < last)
+			stacks->stack_b[i - 1] = stacks->stack_b[i];
+		stacks->stack_b[last] = swap;
+	}
+}
+
+void	rrr(t_stacks *stacks)
+{
+	rra(stacks);
+	rrb(stacks);
 }
 
 void	print_stack(t_stacks stacks, char c)
