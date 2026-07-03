@@ -4,7 +4,11 @@ DEBUGFLAGS	:= -g -O0
 
 SRCS		:= 	push_swap.c \
 				stack_utils.c \
-				algorithms/simple/simple_algo.c
+				algorithms/simple/simple_algo.c \
+				operations/push.c \
+				operations/swap.c \
+				operations/rotate.c \
+				operations/reverse_rotate.c \
 
 OBJS		:= $(SRCS:.c=.o)
 

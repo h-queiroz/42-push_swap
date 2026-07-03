@@ -2,14 +2,40 @@
 
 void	pa(t_stacks *stacks)
 {
-	if ((stacks->amount_b) > 0)
-		stacks->stack_a[stacks->amount_a++] = stacks->stack_b[--stacks->amount_b];
+	int *amount_a;
+	int *amount_b;
+	int *stack_a;
+	int *stack_b;
+
+	stack_a = stacks->stack_a;
+	stack_b = stacks->stack_b;
+	amount_a = &(stacks->amount_a);
+	amount_b = &(stacks->amount_b);
+	if (*amount_b > 0)
+	{
+		stack_a[*amount_a] = stack_b[*amount_b - 1];
+		(*amount_a)++;
+		(*amount_b)--;
+	}
 	ft_printf("pa\n");
 }
 
 void	pb(t_stacks *stacks)
 {
-	if ((stacks->amount_a) > 0)
-		stacks->stack_b[stacks->amount_b++] = stacks->stack_a[--stacks->amount_a];
+	int *amount_a;
+	int *amount_b;
+	int *stack_a;
+	int *stack_b;
+
+	stack_a = stacks->stack_a;
+	stack_b = stacks->stack_b;
+	amount_a = &(stacks->amount_a);
+	amount_b = &(stacks->amount_b);
+	if (*amount_a > 0)
+	{
+		stack_b[*amount_b] = stack_a[*amount_a - 1];
+		(*amount_b)++;
+		(*amount_a)--;
+	}
 	ft_printf("pb\n");
 }

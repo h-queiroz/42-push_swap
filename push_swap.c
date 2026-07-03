@@ -1,4 +1,5 @@
 #include "push_swap.h"
+#include "operations.h"
 // #include "algorithms.h"
 
 // Taking in consideration that is only gonna receive valid numbers for now
