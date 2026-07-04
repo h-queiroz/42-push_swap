@@ -10,24 +10,31 @@ static void	move_to_top(int index, int *stack, int max_length);
 // 		IF index is in at bottom half of the stack, rotate stack DOWNWARDS
 // 		IF index is in at top half of the stack, rotate stack UPWARDS
 // Push it to Stack B				-- DONE
-// Repeat until Stack A is empty
+// Repeat until Stack A is empty	-- DONE
 // Push all numbers back to Stack A
 
 void	apply_simple(t_stacks *stacks)
 {
 	int	minor_index;
 
-	// Passo 1
-	minor_index = search_minor(stacks->stack_a, stacks->amount_a);
-	ft_printf("Minor Index in A: %d\n", minor_index);
-	ft_printf("Minor Value in A: %d\n", stacks->stack_a[minor_index]);
-	ft_printf("--------------------------\n");
+	// Passo 4
+	while (stacks->amount_a > 1)
+	{
+		// Passo 1
+		minor_index = search_minor(stacks->stack_a, stacks->amount_a);
+		// ft_printf("Minor Index in A: %d\n", minor_index);
+		// ft_printf("Minor Value in A: %d\n", stacks->stack_a[minor_index]);
+		// ft_printf("--------------------------\n");
 
-	// Passo 2
-	move_to_top(minor_index, stacks->stack_a, stacks->amount_a);
+		// Passo 2
+		move_to_top(minor_index, stacks->stack_a, stacks->amount_a);
 
-	// Passo 3
-	pb(stacks);
+		// Passo 3
+		pb(stacks);
+	}
+	// Passo 5
+	while (stacks->amount_b > 0)
+		pa(stacks);
 }
 
 // Returns index of minor number in given Stack

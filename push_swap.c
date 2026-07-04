@@ -21,13 +21,13 @@ int	main(int ac, char **av)
 	// rrb(stacks.stack_b, stacks.amount_b);
 	// rrr(&stacks);
 
-	print_stack(stacks, 'a');
-	print_stack(stacks, 'b');
+	// print_stack(stacks, 'a');
+	// print_stack(stacks, 'b');
 
 	apply_simple(&stacks);
 
-	print_stack(stacks, 'a');
-	print_stack(stacks, 'b');
+	// print_stack(stacks, 'a');
+	// print_stack(stacks, 'b');
 
 	return (0);
 }
