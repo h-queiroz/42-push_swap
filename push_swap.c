@@ -1,6 +1,6 @@
 #include "push_swap.h"
-#include "operations.h"
-// #include "algorithms.h"
+// #include "operations.h"
+#include "algorithms.h"
 
 // Taking in consideration that is only gonna receive valid numbers for now
 int	main(int ac, char **av)
@@ -24,7 +24,10 @@ int	main(int ac, char **av)
 	print_stack(stacks, 'a');
 	print_stack(stacks, 'b');
 
-	// apply_simple(&stacks);
+	apply_simple(&stacks);
+
+	print_stack(stacks, 'a');
+	print_stack(stacks, 'b');
 
 	return (0);
 }
