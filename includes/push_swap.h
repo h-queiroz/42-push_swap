@@ -3,21 +3,29 @@
 
 # include "ft_printf.h"
 
-typedef struct s_stacks
+// CRIAR NOVO TIPO PARA STACK ÚNICA
+// Ex: Mandar int* e max_length daquela stack;
+
+typedef struct s_node t_node;
+struct s_node
 {
-	int	*stack_a;
-	int	*stack_b;
-	int	max_length;
-	int	amount_a;
-	int	amount_b;
-}	t_stacks;
+	int		value;
+	t_node	*next;
+	t_node	*previous;
+};
 
 // For production
-// Creates a t_stacks containing stack_a with all receiving numbers
-// and stack_b of the same size but empty with zeros.
-t_stacks	init_stacks(int ac, char **av);
+// Creates a Linked List of nodes where each node contains
+// a number from the stack, points to the next and the previous
+// node.
+// In the case of the first and last node, the first node's previous
+// is the last node and the last node's next is the first node
+// Making this a Circular Double Linked List
+// t_node	*init_stacks(int ac, char **av);
 
 // For debug
-void		print_stack(t_stacks stacks, char c);
+// void		print_stack(t_stacks stacks, char c);
+void	print_stack(const t_node *first_node);
+void	print_node(const t_node *node);
 
 #endif // PUSH_SWAP_H

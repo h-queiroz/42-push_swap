@@ -1,6 +1,6 @@
 push_swap
 ft_printf/
-.gitignore
 compile_commands.json
 swapper/
 checker_linux
+linked_test

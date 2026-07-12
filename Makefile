@@ -32,5 +32,13 @@ fclean: clean
 
 re:	fclean all
 
+SRCS		:= push_swap.c \
+			   stack_utils.c
+
+NAME		:= linked_test
+
+linked: $(SRCS)
+	$(CC) $(CFLAGS) $(SRCS) $(LIBFT) -o $(NAME)
+
 .PHONY: all clean fclean re
 
