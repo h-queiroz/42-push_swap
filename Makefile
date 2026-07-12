@@ -32,5 +32,7 @@ fclean: clean
 
 re:	fclean all
 
-.PHONY: all clean fclean re
+bonus:
+	$(MAKE) -C bonus
 
+.PHONY: all clean fclean re bonus
