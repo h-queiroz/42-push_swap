@@ -29,5 +29,8 @@ int	main(int ac, char **av)
 	// print_stack(stacks, 'a');
 	// print_stack(stacks, 'b');
 
+	free(stacks.stack_a);
+	free(stacks.stack_b);
+
 	return (0);
 }
