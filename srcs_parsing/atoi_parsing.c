@@ -31,15 +31,15 @@ int	ft_atoi_ps(char *str, int *result)
 	}
 	if (str[i] == '\0')
 		return (0);
-	while (str[i])
+	while (str[i++])
 	{
-		if (!ps_isdigit(str[i]))
+		if (!ps_isdigit(str[i - 1]))
 			return (0);
-		num = (num * 10) + (str[i] - '0');
+		num = (num * 10) + (str[i - 1] - '0');
 		if (!check_limit(num, sign))
 			return (0);
-		i++;
 	}
 	*result = (int)(num * sign);
 	return (1);
 }
+

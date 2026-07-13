@@ -4,3 +4,5 @@ ft_printf/
 compile_commands.json
 swapper/
 checker_linux
+*.o
+*.a

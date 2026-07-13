@@ -8,12 +8,12 @@
  * Retorna 1 se tudo ok, 0 se algum erro.
  */
 
+/**
+ * Valida se o token é uma flag, se for chama parse_flag.
+ * Se não for flag, valida se é um numero valido com ft_atoi_ps.
+ */
 static int	count_token(char *token, t_input *input)
 {
-    /**
-     * Valida se o token é uma flag, se for chama parse_flag.
-     * Se não for flag, valida se é um numero valido com ft_atoi_ps.
-     */
 	int	tmp;
 
 	if (is_flag(token))
@@ -24,12 +24,12 @@ static int	count_token(char *token, t_input *input)
 	return (1);
 }
 
+/*
+ * Valida se o split não está vazio, se estiver retorna 0.
+ * Itera sobre o split, para cada token chama count_token.
+ */
 static int	count_split(char **split, t_input *input)
 {
-    /*
-    * Valida se o split não está vazio, se estiver retorna 0.
-    * Itera sobre o split, para cada token chama count_token.
-    */
 	int	i;
 
 	i = 0;
@@ -44,12 +44,12 @@ static int	count_split(char **split, t_input *input)
 	return (1);
 }
 
+/**
+ * Itera sobre os argumentos, para cada argumento chama ft_split.
+ * Para cada split chama count_split.
+ */
 int	count_input(int argc, char **argv, t_input *input)
 {
-    /**
-     * Itera sobre os argumentos, para cada argumento chama ft_split.
-     * Para cada split chama count_split.
-     */
 	char	**split;
 	int		i;
 

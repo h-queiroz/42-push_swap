@@ -1,12 +1,12 @@
 #include "push_swap.h"
 
+/**
+ * Compara duas strings, retorna 1 se forem iguais, 0 se forem diferentes.
+ * Retorna 1 se s1 e s2 forem iguais, 0 se forem diferentes.
+ * |-> Pode ser substitudo por ft_strcmp da libft.
+ */
 static int	ps_streq(char *s1, char *s2)
 {
-    /**
-     * Compara duas strings, retorna 1 se forem iguais, 0 se forem diferentes.
-     * Retorna 1 se s1 e s2 forem iguais, 0 se forem diferentes.
-     * |-> Pode ser substitudo por ft_strcmp da libft.
-     */
 	int	i;
 
 	i = 0;
@@ -20,12 +20,12 @@ int	is_flag(char *str)
 	return (str[0] == '-' && str[1] == '-');
 }
 
+/**
+ * Valida se o usuario já passou alguma estrategia, se sim retorna 0.
+ * Seta a estrategia escolhida pelo usuario na struct t_input.
+ */
 static int	set_strategy(t_input *input, t_strategy strategy)
 {
-    /**
-     * Valida se o usuario já passou alguma estrategia, se sim retorna 0.
-     * Seta a estrategia escolhida pelo usuario na struct t_input.
-     */
 	if (input->has_strategy)
 		return (0);
 	input->strategy = strategy;
@@ -33,12 +33,12 @@ static int	set_strategy(t_input *input, t_strategy strategy)
 	return (1);
 }
 
+/**
+ * Valida se a flag é valida, se não for retorna 0.
+ * Se for valida, seta a estrategia escolhida pelo usuario na struct t_input.
+ */
 int	parse_flag(char *str, t_input *input)
 {
-    /**
-     * Valida se a flag é valida, se não for retorna 0.
-     * Se for valida, seta a estrategia escolhida pelo usuario na struct t_input.
-     */
 	if (ps_streq(str, "--bench"))
 	{
 		if (input->bench)
