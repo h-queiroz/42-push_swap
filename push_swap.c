@@ -5,33 +5,16 @@
 // Taking in consideration that is only gonna receive valid numbers for now
 int	main(int ac, char **av)
 {
-	(void) ac;
-	(void) av;
+	if (ac == 1)
+	{
+		ft_printf("Please insert more arguments...\n");
+		return (0);
+	}
 
-	t_node node1;
-	t_node node2;
-	t_node node3;
+	t_node *first_node;
 
-	node1.value = 10;
-	node1.next = &node2;
-	node1.previous = &node3;
-
-	node2.value = 02;
-	node2.next = &node3;
-	node2.previous = &node1;
-
-	node3.value = 333;
-	node3.next = &node1;
-	node3.previous = &node2;
-
-	print_stack(&node2);
-	// print_node(&node1);
-	// print_node(&node2);
-	// print_node(&node3);
-
-	// t_stacks stacks;
-
-	// stacks = init_stacks(ac, av);
+	first_node = init_stack(ac, av);
+	print_stack(first_node);
 
 	// sa(stacks.stack_a, stacks.amount_a);
 	// sb(stacks.stack_b, stacks.amount_b);

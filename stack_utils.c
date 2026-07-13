@@ -1,27 +1,54 @@
 #include "push_swap.h"
 
-// t_node *init_stacks(int ac, char **av)
-// {
-// 	int			i;
-//
-// 	i = 0;
-// 	while (i < ac)
-// 	{
-//
-// 	}
-//
-// 	stacks.max_length = (ac - 1);
-// 	stacks.stack_a = ft_calloc(stacks.max_length, sizeof(int));
-// 	stacks.stack_b = ft_calloc(stacks.max_length, sizeof(int));
-// 	stacks.amount_b = 0;
-// 	i = 0;
-// 	while (--ac > 0)
-// 		stacks.stack_a[ac - 1] = ft_atoi(av[++i]);
-// 	stacks.amount_a = stacks.max_length;
-// 	return (stacks);
-// }
+t_node *init_stack(int ac, char **av)
+{
+	t_node	*first_node;
+	t_node	*prev_node;
+	int		i;
 
+	// If received only 1 number
+	if (ac == 2)
+		return (create_node(ft_atoi(av[1]), NULL, NULL));
+
+	first_node = create_node(ft_atoi(av[1]), NULL, NULL);
+	prev_node = first_node;
+	i = 2;
+	while (i < ac)
+	{
+		prev_node->next = create_node(ft_atoi(av[i]), prev_node, NULL);
+		prev_node = prev_node->next;
+		i++;
+	}
+	// Making it circular
+	first_node->previous = prev_node;
+	prev_node->next = first_node;
+	return (first_node);
+}
+
+// Creates a new t_node in the heap
+// If receive any NULL instead of a valid t_node*,
+// it points to itself instead.
+t_node *create_node(int value, t_node *prev, t_node *next)
+{
+	t_node *new_node;
+
+	new_node = ft_calloc(1, sizeof(t_node));
+	new_node->value = value;
+	if (!prev)
+		new_node->previous = new_node;
+	else
+		new_node->previous = prev;
+	if (!next)
+		new_node->next = new_node;
+	else
+		new_node->next = next;
+	return (new_node);
+}
+
+// ******************************************
 // To be removed when the project is finished
+// ******************************************
+
 void	print_stack(const t_node *first_node)
 {
 	const t_node *iter_node;

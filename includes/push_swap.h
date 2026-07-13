@@ -21,7 +21,8 @@ struct s_node
 // In the case of the first and last node, the first node's previous
 // is the last node and the last node's next is the first node
 // Making this a Circular Double Linked List
-// t_node	*init_stacks(int ac, char **av);
+t_node	*init_stack(int ac, char **av);
+t_node	*create_node(int value, t_node *prev, t_node *next);
 
 // For debug
 // void		print_stack(t_stacks stacks, char c);
