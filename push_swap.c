@@ -5,6 +5,9 @@
 // Taking in consideration that is only gonna receive valid numbers for now
 int	main(int ac, char **av)
 {
+	// Próximo passo implementar free_stack();
+	// Reimplementar operações para funcionarem com linked-list
+	// Reimplementar Algoritmo simples para funcionar com linked-list
 	if (ac == 1)
 	{
 		ft_printf("Please insert more arguments...\n");
@@ -15,6 +18,8 @@ int	main(int ac, char **av)
 
 	first_node = init_stack(ac, av);
 	print_stack(first_node);
+	free(first_node);
+	// free_stack(first_node);
 
 	// sa(stacks.stack_a, stacks.amount_a);
 	// sb(stacks.stack_b, stacks.amount_b);

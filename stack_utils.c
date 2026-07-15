@@ -83,3 +83,23 @@ void	print_node(const t_node *node)
 		ft_printf("%s\n", ft_itoa((node->previous)->value));
 	ft_printf("----------\n\n");
 }
+
+void	free_stack(t_node *first_node)
+{
+	t_node *iter_node;
+	t_node *tmp;
+
+	// If there is only 1 node
+	if (first_node->next == first_node)
+	{
+		free(first_node);
+		return ;
+	}
+	iter_node = first_node;
+	while (iter_node->next)
+	{
+		tmp = iter_node->next;
+		free(iter_node);
+		iter_node = tmp;
+	}
+}

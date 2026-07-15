@@ -38,7 +38,7 @@ SRCS		:= push_swap.c \
 NAME		:= linked_test
 
 linked: $(SRCS)
-	$(CC) $(CFLAGS) $(SRCS) $(LIBFT) -o $(NAME)
+	$(CC) $(CFLAGS) $(DEBUGFLAGS) $(SRCS) $(LIBFT) -o $(NAME)
 
 .PHONY: all clean fclean re
 

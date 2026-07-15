@@ -23,6 +23,7 @@ struct s_node
 // Making this a Circular Double Linked List
 t_node	*init_stack(int ac, char **av);
 t_node	*create_node(int value, t_node *prev, t_node *next);
+void	free_stack(t_node *first_node);
 
 // For debug
 // void		print_stack(t_stacks stacks, char c);
