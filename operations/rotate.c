@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   rotate.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hequeiro <hequeiro@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/07/15 18:08:06 by hequeiro          #+#    #+#             */
+/*   Updated: 2026/07/15 18:08:06 by hequeiro         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "operations.h"
 
 static void	rx(int *stack, int max_length)
@@ -33,4 +45,3 @@ void	rr(t_stacks *stacks)
 	rx(stacks->stack_b, stacks->amount_b);
 	ft_printf("rr\n");
 }
-

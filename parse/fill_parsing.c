@@ -1,4 +1,16 @@
-#include "push_swap.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fill_parsing.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hequeiro <hequeiro@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/07/15 18:04:15 by hequeiro          #+#    #+#             */
+/*   Updated: 2026/07/15 18:04:15 by hequeiro         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "parse.h"
 /**
  * Faz a segunda leitura dos argumentos, salva os numeros no array de inteiros.
  * Aqui não precisa validar se é flag ou numero, pois isso já foi feito na primeira leitura.

@@ -1,26 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   algorithms.h                                       :+:      :+:    :+:   */
+/*   print_str.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hequeiro <hequeiro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/15 18:01:35 by hequeiro          #+#    #+#             */
-/*   Updated: 2026/07/15 18:01:36 by hequeiro         ###   ########.fr       */
+/*   Created: 2026/06/12 16:16:47 by hequeiro          #+#    #+#             */
+/*   Updated: 2026/06/12 16:16:50 by hequeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ALGORITHMS_H
-# define ALGORITHMS_H
+#include "libft.h"
 
-# include "push_swap.h"
+void	handle_s(va_list arg_list, int *counter)
+{
+	char	*temp;
 
-// Simple:
-// Search minor number in Stack A
-// Move it to the top of Stack A
-// Push it to Stack B
-// Repeat until Stack A is empty
-// Push all numbers back to Stack A
-void	apply_simple(t_stacks *stacks);
-
-#endif // ALGORITHMS_H
+	temp = va_arg(arg_list, char *);
+	if (!temp)
+	{
+		ft_putstr_fd("(null)", 1);
+		*counter += 6;
+	}
+	else
+	{
+		ft_putstr_fd(temp, 1);
+		*counter += ft_strlen(temp);
+	}
+}

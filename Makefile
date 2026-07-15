@@ -1,5 +1,18 @@
+LIBFT_DIR	:= libft
+LIBFT		:= $(LIBFT_DIR)/libft.a
+
+# Compiler
 CC 			:= cc
-CFLAGS		:= -Wall -Wextra -Werror -Iincludes -Ift_printf
+
+# Compiler/Preprocessor flags (used for compiling files to objects)
+CFLAGS		:= -Wall -Wextra -Werror -Iincludes -I$(LIBFT_DIR)
+
+# Linker flags (directories to search)
+LDFLAGS		:= -L$(LIBFT_DIR)
+
+# Libraries to link (must always go at the very end of the command)
+LDLIBS		:= -lft 
+
 DEBUGFLAGS	:= -g -O0
 
 SRCS		:= 	push_swap.c \
@@ -10,27 +23,39 @@ SRCS		:= 	push_swap.c \
 				operations/rotate.c \
 				operations/reverse_rotate.c \
 
-OBJS		:= $(SRCS:.c=.o)
+PARSE_SRCS	:= atoi_parsing.c \
+			   count_parsing.c \
+			   fill_parsing.c \
+			   flags_parsing.c \
+			   free_parsing.c \
+			   parsing.c
+PARSE_SRCS2 := $(addprefix parse/, $(PARSE_SRCS))
 
-LIBFT		:= ft_printf/libftprintf.a
+# OBJS		:= $(SRCS:.c=.o)
 
 NAME		:= push_swap
 
 all: $(NAME)
 
-$(NAME): $(LIBFT) 
-	$(CC) $(CFLAGS) $(SRCS) $(LIBFT) -o $(NAME)
+$(NAME): $(LIBFT) $(SRCS) $(PARSE_SRCS2)
+	$(CC) $(CFLAGS) $(LDFLAGS) $(SRCS) $(PARSE_SRCS2) $(LDLIBS) -o $(NAME)
 
 $(LIBFT):
-	$(MAKE) -C ft_printf
+	$(MAKE) -C $(LIBFT_DIR)
 
 clean:
 	rm -f $(OBJS)
+	$(MAKE) clean -C $(LIBFT_DIR)
 
-fclean: clean
+fclean:
 	rm -f $(NAME)
+	# rm -f $(OBJS)
+	$(MAKE) fclean -C $(LIBFT_DIR)
 
 re:	fclean all
+
+test_parse: $(LIBFT)
+	$(CC) $(CFLAGS) $(LDFLAGS) $(PARSE_SRCS2) test_parse.c $(LDLIBS) -o test_parse
 
 .PHONY: all clean fclean re
 

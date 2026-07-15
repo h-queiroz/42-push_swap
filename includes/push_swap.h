@@ -1,7 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hequeiro <hequeiro@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/07/15 18:01:25 by hequeiro          #+#    #+#             */
+/*   Updated: 2026/07/15 19:09:08 by hequeiro         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include "ft_printf.h"
+# include "libft.h"
 
 typedef struct s_stacks
 {
@@ -15,7 +27,8 @@ typedef struct s_stacks
 // For production
 // Creates a t_stacks containing stack_a with all receiving numbers
 // and stack_b of the same size but empty with zeros.
-t_stacks	init_stacks(int ac, char **av);
+// t_stacks	init_stacks(int ac, char **av);
+t_stacks	init_stacks(int values[], int length);
 
 // For debug
 void		print_stack(t_stacks stacks, char c);

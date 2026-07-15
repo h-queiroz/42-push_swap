@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   simple_algo.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hequeiro <hequeiro@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/07/15 18:04:11 by hequeiro          #+#    #+#             */
+/*   Updated: 2026/07/15 18:54:28 by hequeiro         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "algorithms.h"
 #include "operations.h"
 
@@ -61,7 +73,7 @@ static int	search_minor(int *stack, int max_length)
 // 		IF index is in at top half of the stack, rotate stack UPWARDS
 static void	move_to_top(int index, int *stack, int max_length)
 {
-	int swap;
+	int	swap;
 
 	swap = stack[index];
 	if (index < ((max_length - 1) / 2))

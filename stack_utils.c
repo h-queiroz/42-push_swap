@@ -1,18 +1,31 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   stack_utils.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hequeiro <hequeiro@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/07/15 18:09:23 by hequeiro          #+#    #+#             */
+/*   Updated: 2026/07/15 19:08:53 by hequeiro         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-t_stacks	init_stacks(int ac, char **av)
+// t_stacks	init_stacks(int ac, char **av)
+t_stacks	init_stacks(int values[], int length)
 {
 	t_stacks	stacks;
 	int			i;
 
-	stacks.max_length = (ac - 1);
-	stacks.stack_a = ft_calloc(stacks.max_length, sizeof(int));
-	stacks.stack_b = ft_calloc(stacks.max_length, sizeof(int));
+	stacks.max_length = length;
+	stacks.stack_a = ft_calloc(length, sizeof(int));
+	stacks.stack_b = ft_calloc(length, sizeof(int));
 	stacks.amount_b = 0;
 	i = 0;
-	while (--ac > 0)
-		stacks.stack_a[ac - 1] = ft_atoi(av[++i]);
-	stacks.amount_a = stacks.max_length;
+	while (i++ < length)
+		stacks.stack_a[i - 1] = values[i - 1];
+	stacks.amount_a = length;
 	return (stacks);
 }
 

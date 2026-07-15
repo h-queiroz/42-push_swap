@@ -1,4 +1,16 @@
-#include "push_swap.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   count_parsing.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hequeiro <hequeiro@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/07/15 18:04:34 by hequeiro          #+#    #+#             */
+/*   Updated: 2026/07/15 18:04:35 by hequeiro         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "parse.h"
 /*
  * Faz a primeira leitura dos argumentos, não salva os numeros.
  * Quebra os argumentos com ft_split.
