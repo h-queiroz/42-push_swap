@@ -29,6 +29,7 @@ typedef struct s_stacks
 // and stack_b of the same size but empty with zeros.
 // t_stacks	init_stacks(int ac, char **av);
 t_stacks	init_stacks(int values[], int length);
+int			is_ordered(int nbs[], int size);
 
 // For debug
 void		print_stack(t_stacks stacks, char c);

@@ -48,5 +48,7 @@ int		parse_flag(char *str, t_input *input);
 void	init_input(t_input *input);
 void	free_input(t_input *input);
 void	free_split(char **split);
+void	print_input(t_input *input);
+char	*strategy_to_str(t_strategy strategy);
 
 #endif

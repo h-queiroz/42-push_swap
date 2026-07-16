@@ -15,16 +15,23 @@
 #include "algorithms.h"
 #include "parse.h"
 
-void test_stacks(t_stacks *stacks);
-static void	print_input(t_input *input);
-static char	*strategy_to_str(t_strategy strategy);
+static void	test_stacks(t_stacks *stacks);
 
-// Needs to check if it is already ordered before applying algo
+// Simple algo is bugged for some reason
+// 		NEEDS TO BE DEBUGGED
+
+// Needs to check if it is already ordered before applying algo -- DONE
 // Needs to implement Medium Algo
 // Needs to implement Complex Algo
 // Needs to implement switch statement for each Algo
 // Needs to calculate disorder
 // Needs to implement --bench logic
+// 		Count each operation
+
+// Convert Array to Linked List
+// Time how long does it take to the whole operation to proccess to compare Array with Linked List
+// Develop the Checker-Bonus
+// Unit Tests for comparing the result of my Checker with the ones that we receive
 
 int	main(int ac, char **av)
 {
@@ -40,18 +47,23 @@ int	main(int ac, char **av)
 			return (1);
 		}
 		print_input(&input);
-		stacks = init_stacks(input.values, input.size);
 
-		test_stacks(&stacks);
-
-		free(stacks.stack_a);
-		free(stacks.stack_b);
+		// Checar se já está ordenado
+		// Se estiver, não printar nada
+		// ft_printf("%s\n", is_ordered(input.values, input.size) ? "Ordered" : "NON-Ordered");
+		if (!is_ordered(input.values, input.size))
+		{
+			stacks = init_stacks(input.values, input.size);
+			test_stacks(&stacks);
+			free(stacks.stack_a);
+			free(stacks.stack_b);
+		}
 		free_input(&input);
 	}
 	return (0);
 }
 
-void test_stacks(t_stacks *stacks)
+static void test_stacks(t_stacks *stacks)
 {
 	// sa(stacks.stack_a, stacks.amount_a);
 	// sb(stacks.stack_b, stacks.amount_b);
@@ -72,35 +84,4 @@ void test_stacks(t_stacks *stacks)
 
 	print_stack(*stacks, 'a');
 	print_stack(*stacks, 'b');
-}
-
-static void	print_input(t_input *input)
-{
-	int	i;
-
-	ft_printf("=== PARSING RESULT ===\n");
-	ft_printf("strategy: %s\n", strategy_to_str(input->strategy));
-	ft_printf("has_strategy: %d\n", input->has_strategy);
-	ft_printf("bench: %d\n", input->bench);
-	ft_printf("size: %d\n", input->size);
-	i = 0;
-	while (i < input->size)
-	{
-		ft_printf("values[%d]: %d\n", i, input->values[i]);
-		i++;
-	}
-	ft_printf("======================\n");
-}
-
-static char	*strategy_to_str(t_strategy strategy)
-{
-	if (strategy == STRATEGY_SIMPLE)
-		return ("--simple");
-	if (strategy == STRATEGY_MEDIUM)
-		return ("--medium");
-	if (strategy == STRATEGY_COMPLEX)
-		return ("--complex");
-	if (strategy == STRATEGY_ADAPTIVE)
-		return ("--adaptive");
-	return ("unknown");
 }

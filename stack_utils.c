@@ -44,3 +44,17 @@ void	print_stack(t_stacks stacks, char c)
 		ft_printf("\n------------------------------");
 	ft_printf("\n");
 }
+
+// Checks if given stacks is already ordered
+int	is_ordered(int nbs[], int size)
+{
+	int	i;
+
+	if (size <= 1)
+		return (1);
+	i = 1;
+	while (i++ < size)
+		if (nbs[i - 1] < nbs[i - 2])
+			return (0);
+	return (1);
+}

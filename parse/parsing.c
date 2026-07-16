@@ -47,3 +47,41 @@ int	parse_input(int argc, char **argv, t_input *input)
 		return (0);
 	return (1);
 }
+
+/**
+ * Printa todas as informações do input de maneira bem formatada
+ */
+void	print_input(t_input *input)
+{
+	int	i;
+
+	ft_printf("=== PARSING RESULT ===\n");
+	ft_printf("strategy: %s\n", strategy_to_str(input->strategy));
+	ft_printf("has_strategy: %d\n", input->has_strategy);
+	ft_printf("bench: %d\n", input->bench);
+	ft_printf("size: %d\n", input->size);
+	i = 0;
+	while (i < input->size)
+	{
+		ft_printf("values[%d]: %d\n", i, input->values[i]);
+		i++;
+	}
+	ft_printf("======================\n");
+}
+
+/**
+ * Convert enum t_strategy para str ao mesmo tempo que valida
+ * se é uma estratégia válida
+ */
+char	*strategy_to_str(t_strategy strategy)
+{
+	if (strategy == STRATEGY_SIMPLE)
+		return ("--simple");
+	if (strategy == STRATEGY_MEDIUM)
+		return ("--medium");
+	if (strategy == STRATEGY_COMPLEX)
+		return ("--complex");
+	if (strategy == STRATEGY_ADAPTIVE)
+		return ("--adaptive");
+	return ("unknown");
+}
