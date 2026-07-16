@@ -26,6 +26,7 @@ void	apply_simple(t_stacks *stacks)
 {
 	int	minor_index;
 
+	ft_printf("Applying Simple Algorithm\n");
 	// Passo 4
 	while (stacks->amount_a > 1)
 	{

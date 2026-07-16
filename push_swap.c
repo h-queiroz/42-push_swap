@@ -14,8 +14,10 @@
 // #include "operations.h"
 #include "algorithms.h"
 #include "parse.h"
+// #include <stdio.h>
 
-static void	test_stacks(t_stacks *stacks);
+// static void		test_stacks(t_stacks *stacks);
+static float	compute_disorder(int *stack, int max_length);
 
 // Simple algo is bugged for some reason -- DONE
 // 		NEEDS TO BE DEBUGGED -- FIXED
@@ -23,8 +25,8 @@ static void	test_stacks(t_stacks *stacks);
 // Needs to check if it is already ordered before applying algo -- DONE
 // Needs to implement Medium Algo
 // Needs to implement Complex Algo
-// Needs to implement switch statement for each Algo
-// Needs to calculate disorder
+// Needs to calculate disorder -- DONE
+// Needs to implement switch statement for each Algo depending on disorder -- DONE / Still needs to be tested
 // Needs to implement --bench logic
 // 		Count each operation
 
@@ -37,6 +39,9 @@ int	main(int ac, char **av)
 {
 	t_input		input;
 	t_stacks	stacks;
+	float		disorder;
+	int			max;
+	int			min;
 
 	if (ac > 1)
 	{
@@ -51,18 +56,59 @@ int	main(int ac, char **av)
 		// Checar se já está ordenado
 		// Se estiver, não printar nada
 		// ft_printf("%s\n", is_ordered(input.values, input.size) ? "Ordered" : "NON-Ordered");
-		if (!is_ordered(input.values, input.size))
+
+		disorder = compute_disorder(input.values, input.size);
+		max = disorder * 100;
+		min = ((int)(disorder * 10000)) % 100;
+		ft_printf("Disorder: %d.%d\n", max, min);
+
+		if (!(max == 0 && min == 0))
 		{
 			stacks = init_stacks(input.values, input.size);
-			test_stacks(&stacks);
+
+			print_stack(stacks, 'a');
+			print_stack(stacks, 'b');
+			
+			if (input.strategy == STRATEGY_ADAPTIVE)
+			{
+				if (max < 20)
+					apply_simple(&stacks);
+				else if (max >= 20 && max < 50)
+					ft_printf("Applying Medium Algorithm\n");
+				else if (max >= 50)
+					ft_printf("Applying Complex Algorithm\n");
+			}
+			else if (input.strategy == STRATEGY_SIMPLE)
+				apply_simple(&stacks);
+			else if (input.strategy == STRATEGY_MEDIUM)
+				ft_printf("Applying Medium Algorithm\n");
+			else if (input.strategy == STRATEGY_COMPLEX)
+				ft_printf("Applying Complex Algorithm\n");
+
+			print_stack(stacks, 'a');
+			print_stack(stacks, 'b');
+
+			// test_stacks(&stacks);
 			free(stacks.stack_a);
 			free(stacks.stack_b);
 		}
+
+		// ft_printf("Disorder: %d\n", (int)(disorder * 100));
+		// ft_printf("Disorder: %d\n", ((int)(disorder * 10000) % 100));
+
+		// if (!is_ordered(input.values, input.size))
+		// {
+		// 	stacks = init_stacks(input.values, input.size);
+		// 	test_stacks(&stacks);
+		// 	free(stacks.stack_a);
+		// 	free(stacks.stack_b);
+		// }
 		free_input(&input);
 	}
 	return (0);
 }
 
+/*
 static void test_stacks(t_stacks *stacks)
 {
 	// sa(stacks.stack_a, stacks.amount_a);
@@ -84,4 +130,31 @@ static void test_stacks(t_stacks *stacks)
 
 	print_stack(*stacks, 'a');
 	print_stack(*stacks, 'b');
+}
+*/
+
+static float	compute_disorder(int *stack, int max_length)
+{
+	float	mistakes;
+	float	total_pairs;
+	int	i;
+	int	j;
+
+	// ft_printf("Entered compute_disorder()\n");
+	mistakes = 0;
+	total_pairs = 0;
+	i = 0;
+	while (i < max_length)
+	{
+		j = i + 1;
+		while (j < max_length)
+		{
+			total_pairs++;
+			if (stack[i] > stack[j])
+				mistakes++;
+			j++;
+		}
+		i++;
+	}
+	return (mistakes / total_pairs);
 }

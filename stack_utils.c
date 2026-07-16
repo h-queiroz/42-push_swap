@@ -46,6 +46,8 @@ void	print_stack(t_stacks stacks, char c)
 }
 
 // Checks if given stacks is already ordered
+// Inútil agora depois que implementei cálculo de disorder
+// Remover futuramente
 int	is_ordered(int nbs[], int size)
 {
 	int	i;
