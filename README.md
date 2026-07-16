@@ -1,5 +1,11 @@
 *This project has been created as part of the 42 curriculum by hequeiro, dassunca*
 
+# The repository must clearly indicate both learners’ contributions in the README.md file.
+
+# During the defense, both learners must be present and able to explain any part of the code.
+
+# You must document in your repository (e.g., README.md) the rationale for your thresholds, the internal techniques used in each regime, and a brief complexity argument (upper bounds) for time and space within the Push_swap model.
+
 # Description
 # Instructions
 # Resources
