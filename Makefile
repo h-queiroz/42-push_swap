@@ -57,5 +57,8 @@ re:	fclean all
 test_parse: $(LIBFT)
 	$(CC) $(CFLAGS) $(LDFLAGS) $(PARSE_SRCS2) test_parse.c $(LDLIBS) -o test_parse
 
+debug: $(LIBFT)
+	$(CC) $(CFLAGS) $(DEBUGFLAGS) $(LDFLAGS) $(SRCS) $(PARSE_SRCS2) $(LDLIBS) -o $(NAME)
+
 .PHONY: all clean fclean re
 
