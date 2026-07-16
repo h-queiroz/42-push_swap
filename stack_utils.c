@@ -24,7 +24,7 @@ t_stacks	init_stacks(int values[], int length)
 	stacks.amount_b = 0;
 	i = 0;
 	while (i++ < length)
-		stacks.stack_a[i - 1] = values[i - 1];
+		stacks.stack_a[i - 1] = values[length - i];
 	stacks.amount_a = length;
 	return (stacks);
 }

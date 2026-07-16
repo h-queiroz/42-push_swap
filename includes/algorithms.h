@@ -23,4 +23,7 @@
 // Push all numbers back to Stack A
 void	apply_simple(t_stacks *stacks);
 
+int		search_minor(int *stack, int max_length);
+void	move_to_top(int index, int *stack, int max_length);
+
 #endif // ALGORITHMS_H

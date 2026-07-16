@@ -17,8 +17,8 @@
 
 static void	test_stacks(t_stacks *stacks);
 
-// Simple algo is bugged for some reason
-// 		NEEDS TO BE DEBUGGED
+// Simple algo is bugged for some reason -- DONE
+// 		NEEDS TO BE DEBUGGED -- FIXED
 
 // Needs to check if it is already ordered before applying algo -- DONE
 // Needs to implement Medium Algo
