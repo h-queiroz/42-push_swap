@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hequeiro <hequeiro@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: dassunca <dassunca@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/15 18:09:57 by hequeiro          #+#    #+#             */
-/*   Updated: 2026/07/15 18:09:58 by hequeiro         ###   ########.fr       */
+/*   Created: 2026/07/17 12:09:33 by dassunca          #+#    #+#             */
+/*   Updated: 2026/07/17 12:11:19 by dassunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

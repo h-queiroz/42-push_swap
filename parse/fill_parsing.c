@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fill_parsing.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hequeiro <hequeiro@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: dassunca <dassunca@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/15 18:04:15 by hequeiro          #+#    #+#             */
-/*   Updated: 2026/07/15 18:04:15 by hequeiro         ###   ########.fr       */
+/*   Created: 2026/07/17 12:13:18 by dassunca          #+#    #+#             */
+/*   Updated: 2026/07/17 12:13:32 by dassunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

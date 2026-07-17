@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   flags_parsing.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hequeiro <hequeiro@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: dassunca <dassunca@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/15 18:04:47 by hequeiro          #+#    #+#             */
-/*   Updated: 2026/07/15 19:21:18 by hequeiro         ###   ########.fr       */
+/*   Created: 2026/07/17 12:13:43 by dassunca          #+#    #+#             */
+/*   Updated: 2026/07/17 12:13:46 by dassunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

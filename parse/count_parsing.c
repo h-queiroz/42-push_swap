@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   count_parsing.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hequeiro <hequeiro@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: dassunca <dassunca@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/15 18:04:34 by hequeiro          #+#    #+#             */
-/*   Updated: 2026/07/15 18:04:35 by hequeiro         ###   ########.fr       */
+/*   Created: 2026/07/17 12:14:15 by dassunca          #+#    #+#             */
+/*   Updated: 2026/07/17 12:14:19 by dassunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

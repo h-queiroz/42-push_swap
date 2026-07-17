@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   atoi_parsing.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hequeiro <hequeiro@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: dassunca <dassunca@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/15 18:04:24 by hequeiro          #+#    #+#             */
-/*   Updated: 2026/07/15 18:04:27 by hequeiro         ###   ########.fr       */
+/*   Created: 2026/07/17 12:14:04 by dassunca          #+#    #+#             */
+/*   Updated: 2026/07/17 12:14:08 by dassunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
