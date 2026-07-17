@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hequeiro <hequeiro@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: dassunca <dassunca@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/15 18:09:19 by hequeiro          #+#    #+#             */
-/*   Updated: 2026/07/15 19:26:12 by hequeiro         ###   ########.fr       */
+/*   Updated: 2026/07/17 16:55:19 by dassunca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,38 @@ static float	compute_disorder(int *stack, int max_length);
 // Time how long does it take to the whole operation to proccess to compare Array with Linked List
 // Develop the Checker-Bonus
 // Unit Tests for comparing the result of my Checker with the ones that we receive
+static void	strategy_checker(t_input input, int max)
+{
+	t_stacks	stacks;
+
+	stacks = init_stacks(input.values, input.size);
+	print_stack(stacks, 'a');
+	print_stack(stacks, 'b');
+	if (input.strategy == STRATEGY_ADAPTIVE)
+	{
+		if (max < 20)
+			apply_simple(&stacks);
+		else if (max >= 20 && max < 50)
+			ft_printf("Applying Medium Algorithm\n");
+		else if (max >= 50)
+			ft_printf("Applying Complex Algorithm\n");
+	}
+	else if (input.strategy == STRATEGY_SIMPLE)
+		apply_simple(&stacks);
+	else if (input.strategy == STRATEGY_MEDIUM)
+		ft_printf("Applying Medium Algorithm\n");
+	else if (input.strategy == STRATEGY_COMPLEX)
+		ft_printf("Applying Complex Algorithm\n");
+	print_stack(stacks, 'a');
+	print_stack(stacks, 'b');
+	// test_stacks(&stacks);
+	free(stacks.stack_a);
+	free(stacks.stack_b);
+}
 
 int	main(int ac, char **av)
 {
 	t_input		input;
-	t_stacks	stacks;
 	float		disorder;
 	int			max;
 	int			min;
@@ -61,37 +88,8 @@ int	main(int ac, char **av)
 		max = disorder * 100;
 		min = ((int)(disorder * 10000)) % 100;
 		ft_printf("Disorder: %d.%d\n", max, min);
-
 		if (!(max == 0 && min == 0))
-		{
-			stacks = init_stacks(input.values, input.size);
-
-			print_stack(stacks, 'a');
-			print_stack(stacks, 'b');
-			
-			if (input.strategy == STRATEGY_ADAPTIVE)
-			{
-				if (max < 20)
-					apply_simple(&stacks);
-				else if (max >= 20 && max < 50)
-					ft_printf("Applying Medium Algorithm\n");
-				else if (max >= 50)
-					ft_printf("Applying Complex Algorithm\n");
-			}
-			else if (input.strategy == STRATEGY_SIMPLE)
-				apply_simple(&stacks);
-			else if (input.strategy == STRATEGY_MEDIUM)
-				ft_printf("Applying Medium Algorithm\n");
-			else if (input.strategy == STRATEGY_COMPLEX)
-				ft_printf("Applying Complex Algorithm\n");
-
-			print_stack(stacks, 'a');
-			print_stack(stacks, 'b');
-
-			// test_stacks(&stacks);
-			free(stacks.stack_a);
-			free(stacks.stack_b);
-		}
+			strategy_checker(input, max);
 
 		// ft_printf("Disorder: %d\n", (int)(disorder * 100));
 		// ft_printf("Disorder: %d\n", ((int)(disorder * 10000) % 100));
@@ -137,8 +135,8 @@ static float	compute_disorder(int *stack, int max_length)
 {
 	float	mistakes;
 	float	total_pairs;
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 
 	// ft_printf("Entered compute_disorder()\n");
 	mistakes = 0;
