@@ -6,7 +6,7 @@
 /*   By: dassunca <dassunca@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/15 18:09:19 by hequeiro          #+#    #+#             */
-/*   Updated: 2026/07/19 01:59:55 by hequeiro         ###   ########.fr       */
+/*   Updated: 2026/07/19 02:37:55 by hequeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ static void		strategy_checker(t_input *input, t_bench *bench)
 		if (bench->disorder_max < 20)
 			apply_simple(&stacks, bench);
 		else if (bench->disorder_max >= 20 && bench->disorder_max < 50)
-			ft_printf("Applying Medium Algorithm\n");
+			apply_medium(&stacks, bench);
 		else if (bench->disorder_max >= 50)
 			ft_printf("Applying Complex Algorithm\n");
 	}

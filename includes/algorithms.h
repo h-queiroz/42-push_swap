@@ -6,7 +6,7 @@
 /*   By: hequeiro <hequeiro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/15 18:01:35 by hequeiro          #+#    #+#             */
-/*   Updated: 2026/07/19 01:27:11 by hequeiro         ###   ########.fr       */
+/*   Updated: 2026/07/19 02:38:07 by hequeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 // Push all numbers back to Stack A
 // void	apply_simple(t_stacks *stacks);
 void	apply_simple(t_stacks *stacks, t_bench *bench);
+void	apply_medium(t_stacks *stacks, t_bench *bench);
 
 int		search_minor(int *stack, int max_length);
 // void	move_to_top(int index, int *stack, int max_length);
