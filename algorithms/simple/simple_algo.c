@@ -6,7 +6,7 @@
 /*   By: hequeiro <hequeiro@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/15 18:04:11 by hequeiro          #+#    #+#             */
-/*   Updated: 2026/07/15 18:54:28 by hequeiro         ###   ########.fr       */
+/*   Updated: 2026/07/19 01:56:01 by hequeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 // Repeat until Stack A is empty	-- DONE
 // Push all numbers back to Stack A
 
-void	apply_simple(t_stacks *stacks)
+void	apply_simple(t_stacks *stacks, t_bench *bench)
 {
 	int	minor_index;
 
@@ -37,14 +37,14 @@ void	apply_simple(t_stacks *stacks)
 		// ft_printf("--------------------------\n");
 
 		// Passo 2
-		move_to_top(minor_index, stacks->stack_a, stacks->amount_a);
+		move_to_top(minor_index, stacks->stack_a, stacks->amount_a, bench);
 
 		// Passo 3
-		pb(stacks);
+		pb(stacks, bench);
 	}
 	// Passo 5
 	while (stacks->amount_b > 0)
-		pa(stacks);
+		pa(stacks, bench);
 }
 
 // Returns index of minor number in given Stack
@@ -69,15 +69,15 @@ int	search_minor(int *stack, int max_length)
 // Moves it to the top of Stack A
 // 		IF index is in at bottom half of the stack, rotate stack DOWNWARDS
 // 		IF index is in at top half of the stack, rotate stack UPWARDS
-void	move_to_top(int index, int *stack, int max_length)
+void	move_to_top(int index, int *stack, int max_length, t_bench *bench)
 {
 	int	swap;
 
 	swap = stack[index];
 	if (index < ((max_length - 1) / 2))
 		while (stack[max_length - 1] != swap)
-			rra(stack, max_length);
+			rra(stack, max_length, bench);
 	else
 		while (stack[max_length - 1] != swap)
-			ra(stack, max_length);
+			ra(stack, max_length, bench);
 }
