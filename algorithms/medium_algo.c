@@ -24,7 +24,7 @@
 // 		For example: OG Stack:  [7, 15, -8, 13, 22, 0, 4]
 // 			     	 Duplicate: [3,  5,  0,  4,  6, 1, 2]
 // 2. Define chunk-size based on √n. Rounded down -- DONE
-// 3. Look closer number at the top of the stack that fits in the chunk
+// 3. Look closer number at the top of the stack that fits in the chunk -- DONE
 // 4. Move it to the top
 // 5. Prepare Stack B
 // 6. Push it to Stack B
@@ -39,6 +39,7 @@
 int			next_minor(const int *stack, int max_length, int current_minor);
 t_stacks	create_duplicate(int *stack, int max_length);
 int			square_root(int nb);
+int			closer_element(int *stack, int max_length, int lower_bound, int upper_bound);
 
 void	apply_medium(t_stacks *stacks, t_bench *bench)
 {
@@ -46,9 +47,10 @@ void	apply_medium(t_stacks *stacks, t_bench *bench)
 	int			chunk_size;
 	int			lower_bound;
 	int			upper_bound;
+	// int			element_index;
 	int			i;
 
-	ft_printf("Applying Medium Algorithm\n");
+	ft_printf("\033[1;33m" "Applying Medium Algorithm\n");
 	duplicate = create_duplicate(stacks->stack_a, stacks->amount_a);
 	i = 0;
 
@@ -65,14 +67,19 @@ void	apply_medium(t_stacks *stacks, t_bench *bench)
 	ft_printf("First Lower Bound: %d\n", lower_bound);
 	ft_printf("First Upper Bound: %d\n", upper_bound);
 
+	closer_element(duplicate.stack_a, duplicate.amount_a, lower_bound, upper_bound);
+
 	lower_bound += chunk_size;
 	upper_bound += chunk_size;
 	ft_printf("Second Lower Bound: %d\n", lower_bound);
 	ft_printf("Second Upper Bound: %d\n", upper_bound);
 
+
 	free(duplicate.stack_a);
 	free(duplicate.stack_b);
 	(void)bench;
+
+	ft_printf("\033[0m");
 }
 
 int next_minor(const int *stack, int max_length, int current_minor)
@@ -123,4 +130,35 @@ int	square_root(int nb)
 	while ((i * i) <= nb && (i * i) <= 46341)
 		i++;
 	return (i - 1);
+}
+
+int	closer_element(int *stack, int max_length, int lower_bound, int upper_bound)
+{
+	int	i; // Downwards
+	int	j; // Upwards
+
+	i = (max_length - 1);
+	if (stack[i] >= lower_bound && stack[i] <= upper_bound)
+	// {
+	// 	ft_printf("Closer is at the top with value %d\n", stack[i]);
+		return (i);
+	// }
+	i--;
+	j = 0;
+	while (j <= i)
+	{
+		if (stack[i] >= lower_bound && stack[i] <= upper_bound)
+		// {
+		// 	ft_printf("Closer downward is %d of index %d\n", stack[i], i);
+			return (i);
+		// }
+		else if (stack[j] >= lower_bound && stack[j] <= upper_bound)
+		// {
+		// 	ft_printf("Closer upward is %d of index %d\n", stack[j], j);
+			return (j);
+		// }
+		i--;
+		j++;
+	}
+	return (-1);
 }
