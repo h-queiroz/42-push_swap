@@ -25,7 +25,7 @@
 // 			     	 Duplicate: [3,  5,  0,  4,  6, 1, 2]
 // 2. Define chunk-size based on √n. Rounded down -- DONE
 // 3. Look closer number at the top of the stack that fits in the chunk -- DONE
-// 4. Move it to the top
+// 4. Move it to the top -- DONE
 // 5. Prepare Stack B
 // 6. Push it to Stack B
 // 7. Repeat 3-6 until chunk is done
@@ -47,7 +47,7 @@ void	apply_medium(t_stacks *stacks, t_bench *bench)
 	int			chunk_size;
 	int			lower_bound;
 	int			upper_bound;
-	// int			element_index;
+	int			element_index;
 	int			i;
 
 	ft_printf("\033[1;33m" "Applying Medium Algorithm\n");
@@ -67,13 +67,17 @@ void	apply_medium(t_stacks *stacks, t_bench *bench)
 	ft_printf("First Lower Bound: %d\n", lower_bound);
 	ft_printf("First Upper Bound: %d\n", upper_bound);
 
-	closer_element(duplicate.stack_a, duplicate.amount_a, lower_bound, upper_bound);
+	element_index = closer_element(duplicate.stack_a, duplicate.amount_a, lower_bound, upper_bound);
+	move_to_top(element_index, stacks->stack_a, stacks->amount_a, bench);
+	move_to_top(element_index, duplicate.stack_a, duplicate.amount_a, bench);
+
+	print_stack(duplicate, 'a');
+	print_stack(duplicate, 'b');
 
 	lower_bound += chunk_size;
 	upper_bound += chunk_size;
 	ft_printf("Second Lower Bound: %d\n", lower_bound);
 	ft_printf("Second Upper Bound: %d\n", upper_bound);
-
 
 	free(duplicate.stack_a);
 	free(duplicate.stack_b);
