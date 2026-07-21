@@ -23,7 +23,7 @@
 // 1. Duplicate the stacks and ranking the values of each number: -- DONE
 // 		For example: OG Stack:  [7, 15, -8, 13, 22, 0, 4]
 // 			     	 Duplicate: [3,  5,  0,  4,  6, 1, 2]
-// 2. Define chunk-size based on √n. Rounded down
+// 2. Define chunk-size based on √n. Rounded down -- DONE
 // 3. Look closer number at the top of the stack that fits in the chunk
 // 4. Move it to the top
 // 5. Prepare Stack B
@@ -38,20 +38,37 @@
 
 int			next_minor(const int *stack, int max_length, int current_minor);
 t_stacks	create_duplicate(int *stack, int max_length);
+int			square_root(int nb);
 
 void	apply_medium(t_stacks *stacks, t_bench *bench)
 {
 	t_stacks	duplicate;
+	int			chunk_size;
+	int			lower_bound;
+	int			upper_bound;
 	int			i;
 
 	ft_printf("Applying Medium Algorithm\n");
 	duplicate = create_duplicate(stacks->stack_a, stacks->amount_a);
 	i = 0;
 
+	chunk_size = square_root(stacks->amount_a);
+	ft_printf("Chunk-size: %d\n", chunk_size);
+
 	ft_printf("Dupli A:");
 	while (i < stacks->amount_a)
 		ft_printf("  %d", duplicate.stack_a[i++]);
 	ft_printf("\n");
+
+	lower_bound = 0;
+	upper_bound = chunk_size - 1;
+	ft_printf("First Lower Bound: %d\n", lower_bound);
+	ft_printf("First Upper Bound: %d\n", upper_bound);
+
+	lower_bound += chunk_size;
+	upper_bound += chunk_size;
+	ft_printf("Second Lower Bound: %d\n", lower_bound);
+	ft_printf("Second Upper Bound: %d\n", upper_bound);
 
 	free(duplicate.stack_a);
 	free(duplicate.stack_b);
@@ -96,4 +113,14 @@ t_stacks	create_duplicate(int *stack, int max_length)
 		duplicate.stack_a[minor_index] = j;
 	}
 	return (duplicate);
+}
+
+int	square_root(int nb)
+{
+	int	i;
+
+	i = 1;
+	while ((i * i) <= nb && (i * i) <= 46341)
+		i++;
+	return (i - 1);
 }
