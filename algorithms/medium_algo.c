@@ -22,7 +22,7 @@
 // Medium:
 // 1. Duplicate the stacks and ranking the values of each number: -- DONE
 // 		For example: OG Stack:  [7, 15, -8, 13, 22, 0, 4]
-// 					 Duplicate: [3,  5,  0,  4,  6, 1, 2]
+// 			     	 Duplicate: [3,  5,  0,  4,  6, 1, 2]
 // 2. Define chunk-size based on √n. Rounded down
 // 3. Look closer number at the top of the stack that fits in the chunk
 // 4. Move it to the top
@@ -36,60 +36,64 @@
 #include "libft.h"
 #include "push_swap.h"
 
-int	next_minor(int *stack, int max_length, int current_minor);
-int *create_duplicate(int *stack, int max_length);
+int			next_minor(const int *stack, int max_length, int current_minor);
+t_stacks	create_duplicate(int *stack, int max_length);
 
 void	apply_medium(t_stacks *stacks, t_bench *bench)
 {
-	int	*duplicate;
+	t_stacks	duplicate;
+	int			i;
 
 	ft_printf("Applying Medium Algorithm\n");
 	duplicate = create_duplicate(stacks->stack_a, stacks->amount_a);
-	free(duplicate);
+	i = 0;
+
+	ft_printf("Dupli A:");
+	while (i < stacks->amount_a)
+		ft_printf("  %d", duplicate.stack_a[i++]);
+	ft_printf("\n");
+
+	free(duplicate.stack_a);
+	free(duplicate.stack_b);
 	(void)bench;
 }
 
-int next_minor(int *stack, int max_length, int current_minor)
+int next_minor(const int *stack, int max_length, int current_minor)
 {
-	int	minor;
+	int	minor_index;
+	int	higher_index;
 	int	i;
 
-	minor = 0;
+	higher_index = 0;
 	i = 0;
-	while (i < max_length)
-	{
-		if (stack[i] > stack[current_minor] && stack[i] < stack[minor])
-			minor = i;
-		i++;
-	}
-	return (minor);
-
+	while (i++ < max_length)
+		if (stack[i - 1] >= stack[higher_index])
+			higher_index = (i - 1);
+	minor_index = higher_index;
+	i = 0;
+	while (i++ < max_length)
+		if (stack[i - 1] > stack[current_minor] && stack[i - 1] < stack[minor_index])
+			minor_index = (i - 1);
+	return (minor_index);
 }
 
-int *create_duplicate(int *stack, int max_length)
+t_stacks	create_duplicate(int *stack, int max_length)
 {
-	int	*duplicate;
-	int	i;
+	t_stacks	duplicate;
 	int	j;
 	int minor_index;
 
-	duplicate = ft_calloc(max_length, sizeof(int));
-
+	duplicate.stack_a = ft_calloc(max_length, sizeof(int));
+	duplicate.amount_a = max_length;
+	duplicate.stack_b = ft_calloc(max_length, sizeof(int));
+	duplicate.amount_b = 0;
 	j = 0;
 	minor_index = search_minor(stack, max_length);
-	duplicate[minor_index] = j;
+	duplicate.stack_a[minor_index] = j;
 	while (++j < max_length)
 	{
 		minor_index = next_minor(stack, max_length, minor_index);
-		duplicate[minor_index] = j;
+		duplicate.stack_a[minor_index] = j;
 	}
-	i = 0;
-	ft_printf("Duplicate: ");
-	while (i < max_length)
-	{
-		ft_printf("%d ", duplicate[i]);
-		i++;
-	}
-	ft_printf("\n");
 	return (duplicate);
 }
