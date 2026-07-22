@@ -27,7 +27,7 @@
 // 3. Look closer number at the top of the stack that fits in the chunk -- DONE
 // 4. Move it to the top -- DONE
 // 5. Push it to Stack B -- DONE
-// 6. Adjust last inserted number in Stack B -- NOT WORKING AS EXPECTED
+// 6. Adjust last inserted number in Stack B -- DONE
 // 7. Repeat 3-6 until chunk is done -- DONE
 // 8. Define chunk again -- DONE
 // 9. Repeat 3-8 until Stack A is empty -- DONE
@@ -85,15 +85,17 @@ void	apply_medium(t_stacks *stacks, t_bench *bench)
 
 			if (duplicate.stack_b[duplicate.amount_b - 1] < (lower_bound + (chunk_size / 2)))
 			{
-				rb(duplicate.stack_a, duplicate.amount_a, bench);
-				rb(stacks->stack_a, duplicate.amount_a, bench);
+				rb(duplicate.stack_b, duplicate.amount_b, bench);
+				rb(stacks->stack_b, stacks->amount_b, bench);
 			}
 			moved_from_chunk++;
 		}
 		lower_bound += chunk_size;
 		upper_bound += chunk_size;
-		ft_printf("Second Lower Bound: %d\n", lower_bound);
-		ft_printf("Second Upper Bound: %d\n", upper_bound);
+		if (duplicate.amount_a < chunk_size)
+			upper_bound = (lower_bound + (duplicate.amount_a - 1));
+		ft_printf("Next Lower Bound: %d\n", lower_bound);
+		ft_printf("Next Upper Bound: %d\n", upper_bound);
 	}
 	
 	ft_printf("========= DUPLICATE =========\n");
