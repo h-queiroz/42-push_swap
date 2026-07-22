@@ -31,7 +31,11 @@
 // 7. Repeat 3-6 until chunk is done -- DONE
 // 8. Define chunk again -- DONE
 // 9. Repeat 3-8 until Stack A is empty -- DONE
-// 10.Push all numbers back and adjusting minimally to go back sorted
+// 10.Push all numbers back and adjusting minimally to go back sorted -- DONE
+
+// Clean up Duplicate operation prints
+// Norminette
+
 #include "algorithms.h"
 #include "libft.h"
 #include "push_swap.h"
@@ -41,6 +45,7 @@ int			next_minor(const int *stack, int max_length, int current_minor);
 t_stacks	create_duplicate(int *stack, int max_length);
 int			square_root(int nb);
 int			closer_element(int *stack, int max_length, int lower_bound, int upper_bound);
+int			search_value(int *stack, int max_length, int value);
 
 void	apply_medium(t_stacks *stacks, t_bench *bench)
 {
@@ -51,6 +56,7 @@ void	apply_medium(t_stacks *stacks, t_bench *bench)
 	int			element_index;
 	int			i;
 	int			moved_from_chunk;
+	int			major;
 
 	ft_printf("\033[1;33m" "Applying Medium Algorithm\n");
 	duplicate = create_duplicate(stacks->stack_a, stacks->amount_a);
@@ -96,6 +102,16 @@ void	apply_medium(t_stacks *stacks, t_bench *bench)
 			upper_bound = (lower_bound + (duplicate.amount_a - 1));
 		ft_printf("Next Lower Bound: %d\n", lower_bound);
 		ft_printf("Next Upper Bound: %d\n", upper_bound);
+	}
+	
+	major = (duplicate.amount_b - 1);
+	while (major >= 0)
+	{
+		move_to_top(search_value(duplicate.stack_b, duplicate.amount_b, major), stacks->stack_b, stacks->amount_b, bench);
+		move_to_top(search_value(duplicate.stack_b, duplicate.amount_b, major), duplicate.stack_b, duplicate.amount_b, bench);
+		pa(&duplicate, bench);
+		pa(stacks, bench);
+		major--;
 	}
 	
 	ft_printf("========= DUPLICATE =========\n");
@@ -192,4 +208,15 @@ int	closer_element(int *stack, int max_length, int lower_bound, int upper_bound)
 		j++;
 	}
 	return (-1);
+}
+
+int	search_value(int *stack, int max_length, int value)
+{
+	int	i;
+
+	i = 0;
+	while (i < max_length)
+		if (stack[i++] == value)
+			return (i - 1);
+	return (0);
 }
