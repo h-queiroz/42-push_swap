@@ -26,15 +26,16 @@
 // 2. Define chunk-size based on √n. Rounded down -- DONE
 // 3. Look closer number at the top of the stack that fits in the chunk -- DONE
 // 4. Move it to the top -- DONE
-// 5. Prepare Stack B
-// 6. Push it to Stack B
-// 7. Repeat 3-6 until chunk is done
-// 8. Define chunk again
-// 9. Repeat 3-8 until Stack A is empty
+// 5. Push it to Stack B -- DONE
+// 6. Adjust last inserted number in Stack B -- NOT WORKING AS EXPECTED
+// 7. Repeat 3-6 until chunk is done -- DONE
+// 8. Define chunk again -- DONE
+// 9. Repeat 3-8 until Stack A is empty -- DONE
 // 10.Push all numbers back and adjusting minimally to go back sorted
 #include "algorithms.h"
 #include "libft.h"
 #include "push_swap.h"
+#include "operations.h"
 
 int			next_minor(const int *stack, int max_length, int current_minor);
 t_stacks	create_duplicate(int *stack, int max_length);
@@ -49,6 +50,7 @@ void	apply_medium(t_stacks *stacks, t_bench *bench)
 	int			upper_bound;
 	int			element_index;
 	int			i;
+	int			moved_from_chunk;
 
 	ft_printf("\033[1;33m" "Applying Medium Algorithm\n");
 	duplicate = create_duplicate(stacks->stack_a, stacks->amount_a);
@@ -67,17 +69,40 @@ void	apply_medium(t_stacks *stacks, t_bench *bench)
 	ft_printf("First Lower Bound: %d\n", lower_bound);
 	ft_printf("First Upper Bound: %d\n", upper_bound);
 
-	element_index = closer_element(duplicate.stack_a, duplicate.amount_a, lower_bound, upper_bound);
-	move_to_top(element_index, stacks->stack_a, stacks->amount_a, bench);
-	move_to_top(element_index, duplicate.stack_a, duplicate.amount_a, bench);
+	while (stacks->amount_a > 0)
+	{
+		moved_from_chunk = 0;
+		while (moved_from_chunk <= (upper_bound - lower_bound))
+		{
+			ft_printf("Moved from chunk: %d\n", moved_from_chunk);
 
+			element_index = closer_element(duplicate.stack_a, duplicate.amount_a, lower_bound, upper_bound);
+			move_to_top(element_index, stacks->stack_a, stacks->amount_a, bench);
+			move_to_top(element_index, duplicate.stack_a, duplicate.amount_a, bench);
+
+			pb(&duplicate, bench);
+			pb(stacks, bench);
+
+			if (duplicate.stack_b[duplicate.amount_b - 1] < (lower_bound + (chunk_size / 2)))
+			{
+				rb(duplicate.stack_a, duplicate.amount_a, bench);
+				rb(stacks->stack_a, duplicate.amount_a, bench);
+			}
+			moved_from_chunk++;
+		}
+		lower_bound += chunk_size;
+		upper_bound += chunk_size;
+		ft_printf("Second Lower Bound: %d\n", lower_bound);
+		ft_printf("Second Upper Bound: %d\n", upper_bound);
+	}
+	
+	ft_printf("========= DUPLICATE =========\n");
 	print_stack(duplicate, 'a');
 	print_stack(duplicate, 'b');
 
-	lower_bound += chunk_size;
-	upper_bound += chunk_size;
-	ft_printf("Second Lower Bound: %d\n", lower_bound);
-	ft_printf("Second Upper Bound: %d\n", upper_bound);
+	ft_printf("\n========= ORIGINALS =========\n");
+	print_stack(*stacks, 'a');
+	print_stack(*stacks, 'b');
 
 	free(duplicate.stack_a);
 	free(duplicate.stack_b);
