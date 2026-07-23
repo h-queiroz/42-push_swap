@@ -6,7 +6,7 @@
 /*   By: dassunca <dassunca@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/15 18:09:19 by hequeiro          #+#    #+#             */
-/*   Updated: 2026/07/23 16:11:41 by hequeiro         ###   ########.fr       */
+/*   Updated: 2026/07/23 17:15:06 by hequeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,12 @@ static void		strategy_checker(t_input *input, t_bench *bench);
 static void		init_bench(t_bench *bench, t_input *input);
 static void		print_bench(t_bench *bench);
 
-// Needs to implement Medium Algo -- DONE
 // Needs to implement Complex Algo
-// Needs to implement switch statement for each Algo depending on disorder -- DONE / Still needs to be tested
-// Needs to implement --bench logic -- SEMI-DONE
-// 		Count each operation -- DONE
+// Needs to --bench correctly to stderr and show algo complexity
 
-// Create new type that contains stack values and amount -- DONE
-
-// Convert Array to Linked List
-// Time how long does it take to the whole operation to proccess to compare Array with Linked List
-// Develop the Checker-Bonus
-// Unit Tests for comparing the result of my Checker with the ones that we receive
+/*********************************
+ * CHECAR COMENTÁRIOS EM PARSE.H *
+ *********************************/
 
 int	main(int ac, char **av)
 {
@@ -80,7 +74,7 @@ static float	compute_disorder(int *stack, int max_length)
 	return (mistakes / total_pairs);
 }
 
-static void		strategy_checker(t_input *input, t_bench *bench)
+static void	strategy_checker(t_input *input, t_bench *bench)
 {
 	t_stacks	stacks;
 
@@ -129,11 +123,13 @@ static void	init_bench(t_bench *bench, t_input *input)
 	bench->count_rrr = 0;
 }
 
-// Still lacks printing directly to STDERR and add Equivalent THEORETICAL COMPLEXITY CLASS
+// Still lacks printing directly to STDERR
+// and add Equivalent THEORETICAL COMPLEXITY CLASS
 // √
 static void	print_bench(t_bench *bench)
 {
-	ft_printf("[bench] disorder:  %d.%d%%\n", bench->disorder_max, bench->disorder_min);
+	ft_printf("[bench] disorder:  %d", bench->disorder_max);
+	ft_printf(".%d%%\n", bench->disorder_min);
 	ft_printf("[bench] strategy: %s / ", strategy_to_str(bench->strategy));
 	ft_printf("HERE GOES THE EQUIVALENT THEORETICAL COMPLEXITY CLASS\n");
 	ft_printf("[bench] total_ops:  %d\n", bench->total_operations);

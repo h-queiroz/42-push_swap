@@ -8,3 +8,4 @@ checker_linux
 linked_test
 test_parse*
 *.txt
+TODO.md
