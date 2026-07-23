@@ -6,7 +6,7 @@
 /*   By: dassunca <dassunca@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/15 18:09:19 by hequeiro          #+#    #+#             */
-/*   Updated: 2026/07/19 02:37:55 by hequeiro         ###   ########.fr       */
+/*   Updated: 2026/07/23 16:11:41 by hequeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ static void		strategy_checker(t_input *input, t_bench *bench);
 static void		init_bench(t_bench *bench, t_input *input);
 static void		print_bench(t_bench *bench);
 
-// Needs to implement Medium Algo
+// Needs to implement Medium Algo -- DONE
 // Needs to implement Complex Algo
 // Needs to implement switch statement for each Algo depending on disorder -- DONE / Still needs to be tested
 // Needs to implement --bench logic -- SEMI-DONE
 // 		Count each operation -- DONE
 
-// Create new type that contains stack values and amount
+// Create new type that contains stack values and amount -- DONE
 
 // Convert Array to Linked List
 // Time how long does it take to the whole operation to proccess to compare Array with Linked List
@@ -85,8 +85,7 @@ static void		strategy_checker(t_input *input, t_bench *bench)
 	t_stacks	stacks;
 
 	stacks = init_stacks(input->values, input->size);
-	print_stack(stacks, 'a');
-	print_stack(stacks, 'b');
+	print_stacks(&stacks);
 	if (input->strategy == STRATEGY_ADAPTIVE)
 	{
 		if (bench->disorder_max < 20)
@@ -102,10 +101,9 @@ static void		strategy_checker(t_input *input, t_bench *bench)
 		apply_medium(&stacks, bench);
 	else if (input->strategy == STRATEGY_COMPLEX)
 		ft_printf("Applying Complex Algorithm\n");
-	print_stack(stacks, 'a');
-	print_stack(stacks, 'b');
-	free(stacks.stack_a);
-	free(stacks.stack_b);
+	print_stacks(&stacks);
+	free(stacks.s_a.stack);
+	free(stacks.s_b.stack);
 }
 
 static void	init_bench(t_bench *bench, t_input *input)

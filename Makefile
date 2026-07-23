@@ -17,6 +17,7 @@ DEBUGFLAGS	:= -g -O0
 
 SRCS		:= 	push_swap.c \
 				stack_utils.c \
+				algorithms/algo_utils.c \
 				algorithms/simple_algo.c \
 				algorithms/medium_algo.c \
 				operations/push.c \

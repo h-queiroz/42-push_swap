@@ -7,3 +7,4 @@ checker_linux
 *.a
 linked_test
 test_parse*
+*.txt
