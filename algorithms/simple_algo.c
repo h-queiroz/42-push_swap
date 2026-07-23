@@ -17,7 +17,6 @@ void	apply_simple(t_stacks *stacks, t_bench *bench)
 {
 	int	minor_index;
 
-	ft_printf("Applying Simple Algorithm\n");
 	while ((stacks->s_a.amount) > 1)
 	{
 		minor_index = search_minor(&stacks->s_a);

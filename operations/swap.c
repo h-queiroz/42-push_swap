@@ -31,7 +31,7 @@ void	sa(t_stack *stack, t_bench *bench)
 	sx(stack);
 	bench->total_operations++;
 	bench->count_sa++;
-	ft_putstr_fd("sa\n", 2);
+	ft_printf("sa\n");
 }
 
 void	sb(t_stack *stack, t_bench *bench)
@@ -39,7 +39,7 @@ void	sb(t_stack *stack, t_bench *bench)
 	sx(stack);
 	bench->total_operations++;
 	bench->count_sb++;
-	ft_putstr_fd("sb\n", 2);
+	ft_printf("sb\n");
 }
 
 void	ss(t_stacks *stacks, t_bench *bench)
@@ -48,5 +48,5 @@ void	ss(t_stacks *stacks, t_bench *bench)
 	sx(&stacks->s_b);
 	bench->total_operations++;
 	bench->count_ss++;
-	ft_putstr_fd("ss\n", 2);
+	ft_printf("ss\n");
 }

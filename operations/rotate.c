@@ -32,7 +32,7 @@ void	ra(t_stack *stack, t_bench *bench)
 	rx(stack);
 	bench->total_operations++;
 	bench->count_ra++;
-	ft_putstr_fd("ra\n", 2);
+	ft_printf("ra\n");
 }
 
 void	rb(t_stack *stack, t_bench *bench)
@@ -40,7 +40,7 @@ void	rb(t_stack *stack, t_bench *bench)
 	rx(stack);
 	bench->total_operations++;
 	bench->count_rb++;
-	ft_putstr_fd("rb\n", 2);
+	ft_printf("rb\n");
 }
 
 void	rr(t_stacks *stacks, t_bench *bench)
@@ -49,5 +49,5 @@ void	rr(t_stacks *stacks, t_bench *bench)
 	rx(&stacks->s_b);
 	bench->total_operations++;
 	bench->count_rr++;
-	ft_putstr_fd("rr\n", 2);
+	ft_printf("rr\n");
 }

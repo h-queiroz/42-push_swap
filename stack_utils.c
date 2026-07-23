@@ -52,19 +52,3 @@ void	print_stacks(const t_stacks *stacks)
 	print_stack(&stacks->s_b);
 	ft_printf("***************************\n");
 }
-
-// Checks if given stacks is already ordered
-// Inútil agora depois que implementei cálculo de disorder
-// Remover futuramente
-int	is_ordered(int nbs[], int size)
-{
-	int	i;
-
-	if (size <= 1)
-		return (1);
-	i = 1;
-	while (i++ < size)
-		if (nbs[i - 1] < nbs[i - 2])
-			return (0);
-	return (1);
-}

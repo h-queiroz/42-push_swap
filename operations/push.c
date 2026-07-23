@@ -38,7 +38,7 @@ void	pa(t_stacks *stacks, t_bench *bench)
 	px(stacks, 'a');
 	bench->total_operations++;
 	bench->count_pa++;
-	ft_putstr_fd("pa\n", 2);
+	ft_printf("pa\n");
 }
 
 void	pb(t_stacks *stacks, t_bench *bench)
@@ -46,5 +46,5 @@ void	pb(t_stacks *stacks, t_bench *bench)
 	px(stacks, 'b');
 	bench->total_operations++;
 	bench->count_pb++;
-	ft_putstr_fd("pb\n", 2);
+	ft_printf("pb\n");
 }

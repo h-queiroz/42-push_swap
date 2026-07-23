@@ -54,7 +54,8 @@ typedef struct s_bench
 // and stack_b of the same size but empty with zeros.
 // t_stacks	init_stacks(int ac, char **av);
 t_stacks	init_stacks(int values[], int length);
-int			is_ordered(int nbs[], int size);
+void		init_bench(t_bench *bench, t_input *input);
+void		print_bench(t_bench *bench);
 
 // For debug
 void		print_stack(const t_stack *stack);
