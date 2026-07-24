@@ -15,6 +15,7 @@
 
 static float	compute_disorder(const int *stack, int max_length);
 static void		print_err(const char *str, int x);
+static void		print_strategy(t_bench *bench);
 
 void	init_bench(t_bench *bench, t_input *input)
 {
@@ -65,19 +66,12 @@ static float	compute_disorder(const int *stack, int max_length)
 	return (mistakes / total_pairs);
 }
 
-// and add Equivalent THEORETICAL COMPLEXITY CLASS
-// √
 void	print_bench(t_bench *bench)
 {
-	char	*strategy;
-
-	strategy = ft_strjoin("[bench] strategy: ", strategy_to_str(bench->strategy)); // To adapt
 	print_err("[bench] disorder:  ", bench->disorder_max);
 	print_err(".", bench->disorder_min);
 	ft_putstr_fd("%\n", 2);
-	ft_putstr_fd(strategy, 2);
-	// ft_printf("HERE GOES THE EQUIVALENT THEORETICAL COMPLEXITY CLASS\n"); // To adapt
-	ft_putstr_fd("\n", 2);
+	print_strategy(bench);
 	print_err("[bench] total_ops:  ", bench->total_operations);
 	ft_putstr_fd("\n", 2);
 	print_err("[bench] sa:  ", bench->count_sa);
@@ -93,7 +87,6 @@ void	print_bench(t_bench *bench)
 	print_err("  rrb:  ", bench->count_rrb);
 	print_err("  rrr:  ", bench->count_rrr);
 	ft_putstr_fd("\n", 2);
-	free(strategy);
 }
 
 static void	print_err(const char *str, int x)
@@ -106,4 +99,20 @@ static void	print_err(const char *str, int x)
 	ft_putstr_fd(final, 2);
 	free(num);
 	free(final);
+}
+
+static void	print_strategy(t_bench *bench)
+{
+	char	*strategy;
+
+	strategy = strategy_to_str(bench->strategy);
+	ft_putstr_fd("[bench] strategy: ", 2);
+	ft_putstr_fd(strategy, 2);
+	ft_putstr_fd(" / ", 2);
+	if (bench->disorder_max < 20)
+		ft_putendl_fd("O(n²)", 2);
+	else if (bench->disorder_max >= 20 && bench->disorder_max < 50)
+		ft_putendl_fd("O(n√n)", 2);
+	else if (bench->disorder_max >= 50)
+		ft_putendl_fd("O(n log n)", 2);
 }

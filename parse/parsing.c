@@ -70,12 +70,12 @@ void	print_input(t_input *input)
 char	*strategy_to_str(t_strategy strategy)
 {
 	if (strategy == STRATEGY_SIMPLE)
-		return ("--simple");
+		return ("Simple");
 	if (strategy == STRATEGY_MEDIUM)
-		return ("--medium");
+		return ("Medium");
 	if (strategy == STRATEGY_COMPLEX)
-		return ("--complex");
+		return ("Complex");
 	if (strategy == STRATEGY_ADAPTIVE)
-		return ("--adaptive");
+		return ("Adaptive");
 	return ("unknown");
 }
