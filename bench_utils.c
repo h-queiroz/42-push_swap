@@ -60,6 +60,8 @@ static float	compute_disorder(const int *stack, int max_length)
 		}
 		i++;
 	}
+	if (total_pairs == 0)
+		return (0);
 	return (mistakes / total_pairs);
 }
 
